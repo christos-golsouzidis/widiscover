@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+:root { 
+    background-color: rgb(227, 216, 156);
+    color: rgb(0, 0, 0);
+}
+
+h1, h2 {
+    color: rgb(227, 216, 156);
+}

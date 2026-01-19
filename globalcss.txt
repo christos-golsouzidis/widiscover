@@ -1,0 +1,5 @@
+
+:root {
+    background-color: rgb(18, 17, 85);
+    color: rgb(210, 195, 119);
+}

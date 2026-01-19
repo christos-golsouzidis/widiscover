@@ -1,0 +1,20 @@
+[project]
+name = "widiscover3-2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiofiles>=25.1.0",
+    "dotenv>=0.9.9",
+    "fastapi>=0.118.0",
+    "fastembed>=0.7.4",
+    "flask>=3.1.2",
+    "groq>=0.37.1",
+    "markdownify>=1.2.2",
+    "pyspellchecker>=0.8.4",
+    "qdrant-client>=1.16.2",
+    "requests>=2.32.5",
+    "transformers>=4.57.3",
+    "uvicorn>=0.37.0",
+]

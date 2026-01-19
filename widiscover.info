@@ -1,0 +1,82 @@
+
+
+
+-----------------
+GET '/api/init' :
+-----------------
+checks if config.json and .env file exist
+- config.json exists and .env exists. If '.env' exists check if the groq API key is not empty:
+success:
+{
+    status: 303,
+    redirects: "/main",
+}
+- either one of config.json .env does not exist or GROQ_API_KEY is empty:
+success:
+{
+    status: 303,
+    redirects: "/config",
+}
+error:
+HTTPException(403, "Permission denied: cannot write <file>")
+
+
+
+---------------
+GET /api/main :
+---------------
+(re)loads the virtual environment and checks if 'config.json' contains valid values.
+- valid json data:
+success:
+{
+    status : 200,
+    message: "ok",
+}
+- invalid json data:
+success:
+{
+    status : 303,
+    redirects: "/config",
+}
+error:
+HTTPException(4XX, <any>)
+
+
+
+-----------------
+GET /api/config :
+-----------------
+returns the settings in the 'config.json' if valid, otherwise returns the predifined settings.
+success:
+<json object>
+
+
+
+------------------
+POST /api/config :
+------------------
+accepts a JSON payload.
+If the key 'env_groq_key' in the json is provided, it updates the GROQ_API_KEY in the .env file.
+Otherwise it checks if the API key is set.
+- If GROQ_API_KEY is missing and not provided:
+success:
+{
+    'status': 303,
+    'warning': 'Groq API key is not set.' | 'Invalid configuration settings.',
+    'redirects': '/config'
+}
+- If settings are successfully saved:
+success:
+{
+    'status': 303,
+    'redirects': '/main'
+}
+error:
+HTTPException(400, 'Error reading from / writing to file.')
+
+
+
+------------------
+GET /api/default :
+------------------
+returns a json with the default settings

@@ -1,0 +1,9 @@
+{
+  "configResultNumberPerPage": 3,
+  "configChunkLength": 1800,
+  "configChunkOverlap": 180,
+  "configTopKResults": 10,
+  "configThreshold": 0.3,
+  "configDistance": 1,
+  "configGenerativeModel": "qwen/qwen3-32b"
+}
