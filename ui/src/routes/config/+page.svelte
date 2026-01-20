@@ -91,8 +91,8 @@
 </script>
 
 <section class="mx-4 md:mx-16 lg:mx-32 xl:mx-48 2xl:mx-64">
-  <div class="text-center mt-8 mb-26">
-    <div class="bg-[rgb(20,20,20)] border-black border-1 rounded-lg p-12 mb-8">
+  <div class="text-center mt-4 mb-26">
+    <div class="bg-[rgb(20,20,20)] border-black border-1 rounded-lg p-8 mb-8">
       <h1 class="text-4xl font-bold mb-4">Configuration</h1>
       <h2 class="text-xl font-semibold mb-2">
         Manage your application settings here.
