@@ -187,6 +187,7 @@ async def get_config():
     returns the settings in the 'config.json' if valid, otherwise returns the predefined settings.
 
     success:
+    
     {
         status: 200,
         message: <json object>
