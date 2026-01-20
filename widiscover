@@ -1,0 +1,4 @@
+#!/bin/bash
+uv run main.py
+# uvicorn main:app --port 7454 --host 0.0.0.0
+
