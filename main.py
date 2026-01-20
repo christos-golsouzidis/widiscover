@@ -264,7 +264,7 @@ async def post_config(request: Request):
                 'status' : 303,
                 'redirects' : '/main'
             }
-    except Exception as e:
+    except Exception:
         raise HTTPException(status=400, detail='Error reading from / writing to file.')
 
 
@@ -280,7 +280,31 @@ async def get_default_values():
 @app.post("/api/query")
 async def root_post(request: Request):
     '''
-    todo
+    POST /api/query :
+    Accepts a JSON payload with 'query' and optional 'topic' fields.
+    Processes the query through the Widiscover pipeline: keyword extraction,
+    Wikipedia search, text processing, and AI-generated answer generation.
+
+    request body:
+
+        {
+            "query": "Your question here",
+            "topic": "Optional topic for context"
+        }
+
+    success:
+
+        {
+            "answer": "Generated answer from AI",
+            "sources": [Array of source information],
+            "usage": {Usage statistics}
+        }
+
+    error:
+        HTTPException(400, "Bad Request") - Invalid request format
+        HTTPException(401, "Authentication error") - Invalid API key
+        HTTPException(403, "Access denied") - Permission issues
+        HTTPException(429, "Too Many Requests") - Rate limit exceeded
     '''
     try:
         data = await request.json()
@@ -318,19 +342,19 @@ async def generate_answer(data):
     except BadRequestError:
         raise HTTPException(status_code=400, detail='Bad Request')
     except AuthenticationError:
-        raise HTTPException(status_code=401, detail='Authentication error: Invalid API key')
+        raise HTTPException(status_code=401, detail='Authentication error')
     except PermissionDeniedError:
         raise HTTPException(status_code=403, detail='Access denied')
     except RateLimitError:
         raise HTTPException(status_code=429, detail='Too Many Requests')
 
 
-# def open_browser():
-#     time.sleep(1.5)  # Wait for server to start
-#     webbrowser.open("http://127.0.0.1:7454")
+def open_browser():
+    time.sleep(1.5)  # Wait for server to start
+    webbrowser.open("http://127.0.0.1:7454")
 
 
 if __name__ == "__main__":
-    # threading.Thread(target=open_browser).start()
-    uvicorn.run("main:app", host="0.0.0.0", port=7454, reload=True)
+    threading.Thread(target=open_browser).start()
+    uvicorn.run("main:app", host="0.0.0.0", port=7454)
 
