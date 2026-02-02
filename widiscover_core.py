@@ -30,7 +30,7 @@ class Widiscover:
             "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", 
             "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", 
             "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", 
-            "further", "then", "once", "here", "there", "who", "whom", "when", "where", "why", "how", "all", "any", "both", "each", "few", 
+            "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", 
             "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s",
             "t", "can", "will", "just", "don", "don't", "should", "should've", "now", "d", "ll", "m", "o", "re", "ve", "y", 
             "ain", "aren", "aren't", "couldn", "couldn't", "didn", "didn't", "doesn", "doesn't", "hadn", "hadn't", "hasn", 

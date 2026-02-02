@@ -3,7 +3,6 @@ import webbrowser
 import threading
 import time
 import aiofiles
-import asyncio
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -55,15 +54,15 @@ class ConfigModel(BaseModel):
     ]
 
 @app.get("/")
-async def get_init():
+async def render_index():
     return FileResponse('ui/build/index.html')
 
 @app.get("/main")
-async def get_init():
+async def render_main():
     return FileResponse('ui/build/main.html')
 
 @app.get("/config")
-async def get_init():
+async def render_config():
     return FileResponse('ui/build/config.html')
 
 @app.get("/api/init")
@@ -177,7 +176,7 @@ async def get_main():
                     'redirects' : '/config'
                 }
     except Exception as e:
-        raise HTTPException(status=400, detail=e)
+        raise HTTPException(status_code=400, detail=e)
 
     
 @app.get("/api/config")
@@ -266,7 +265,7 @@ async def post_config(request: Request):
                 'redirects' : '/main'
             }
     except Exception:
-        raise HTTPException(status=400, detail='Error reading from / writing to file.')
+        raise HTTPException(status_code=400, detail='Error reading from / writing to file.')
 
 
 @app.get('/api/default')
